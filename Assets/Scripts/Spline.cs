@@ -6,7 +6,8 @@ public class Spline : MonoBehaviour {
 
 	public int ID;
 	private List<Node> nodes = new List<Node>();
-
+	public Node firstNode;
+	public Node lastNode;
 	public void Awake()
 	{
 		string number = transform.name [transform.name.Length - 2].ToString ();
@@ -18,11 +19,11 @@ public class Spline : MonoBehaviour {
 			{
 				if(node.ID == 1)
 				{
-					node.prevNode = null;
+					firstNode = node;
 				}
 				else if(node.ID == nodes.Count)
 				{
-					node.nextNode = null;
+					lastNode = node;
 				}
 				if(node == otherNode)
 				{

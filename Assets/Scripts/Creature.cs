@@ -7,6 +7,7 @@ public class Creature : MonoBehaviour {
 	[SerializeField] private float changeTargetDistance;
 	private SteeringAgent agent;
 	public bool hault { get; private set;}
+	public bool teleported = false;
 	// Use this for initialization
 	void Awake () 
 	{
@@ -40,6 +41,10 @@ public class Creature : MonoBehaviour {
 	public void ChangeTarget(Node node)
 	{
 		targetNode = node;
+		if (node.transform.parent != transform.parent) 
+		{
+			transform.parent = node.transform.parent;
+		}
 	}
 	private bool IsCloseToNode()
 	{

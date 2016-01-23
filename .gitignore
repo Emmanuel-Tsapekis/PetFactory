@@ -2,3 +2,8 @@ Library/
 ProjectSettings/ProjectSettings.asset
 ProjectSettings/ProjectVersion.txt
 ProjectSettings/UnityAnalyticsManager.asset
+Assembly-CSharp-Editor-vs.csproj
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp-firstpass-vs.csproj
+Assembly-CSharp-firstpass.csproj
+Assets/Prefabs.meta
