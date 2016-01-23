@@ -5,7 +5,6 @@ using System.Collections;
 public abstract class SteeringBehavior : MonoBehaviour
 {
 	public float MaxAcceleration;
-	public float MaxAngularAcceleration;
 	
 	public virtual Vector3 Acceleration
 	{
@@ -14,24 +13,7 @@ public abstract class SteeringBehavior : MonoBehaviour
 			return Vector3.zero;
 		}
 	}
-	
-	public virtual float AngularAcceleration
-	{
-		get
-		{
-			return 0f;
-		}
-	}
-	
 	public virtual bool HaltTranslation
-	{
-		get
-		{
-			return false;
-		}
-	}
-	
-	public virtual bool HaltRotation
 	{
 		get
 		{

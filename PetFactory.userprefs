@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Seek.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SteeringAgent.cs">
     <Files>
-      <File FileName="Assets\Scripts\Node.cs" Line="13" Column="10" />
+      <File FileName="Assets\Scripts\SteeringBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Node.cs" Line="12" Column="21" />
       <File FileName="Assets\Scripts\SteeringAgent.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Align.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Seek.cs" Line="26" Column="2" />
-      <File FileName="Assets\Scripts\SteeringBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Spline.cs" Line="10" Column="14" />
+      <File FileName="Assets\Scripts\Seek.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Spline.cs" Line="10" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

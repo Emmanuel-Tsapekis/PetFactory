@@ -4,12 +4,12 @@ using System;
 
 public class Seek : SteeringBehavior
 {
-	Character player;
+	Creature player;
 	public Vector3 target;    
 	
 	void Start()
 	{
-		player = GetComponent<Character> ();
+		player = GetComponent<Creature> ();
 		target = player.target;
 	}
 	
