@@ -8,6 +8,9 @@ public class Spline : MonoBehaviour {
 	private List<Node> nodes = new List<Node>();
 	public Node firstNode;
 	public Node lastNode;
+	[SerializeField] private List<Node> nextSplineStarts;
+	[SerializeField] private int nextSplineIndex;
+
 	public void Awake()
 	{
 		string number = transform.name [transform.name.Length - 2].ToString ();
@@ -38,4 +41,5 @@ public class Spline : MonoBehaviour {
 			}
 		}
 	}
+	  
 }
