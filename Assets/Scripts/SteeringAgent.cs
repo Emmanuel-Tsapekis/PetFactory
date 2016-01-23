@@ -9,22 +9,27 @@ public sealed class SteeringAgent : MonoBehaviour
 	public float MaxAngularVelocity;
 	
 	public Vector3 Velocity { get; private set; }
-	SteeringBehavior [] behaviour;
-	Align alignScript;
-	float defaultY;
+	private SteeringBehavior [] behaviour;
+	private Creature creature;
+	private Align alignScript;
+	private float defaultY;
 	void Start()
 	{
 		ResetVelocities ();
 		alignScript = GetComponent<Align> ();
 		behaviour = GetComponents<SteeringBehavior> ();
+		creature = GetComponent<Creature> ();
 		defaultY = transform.position.y;
 	}
 	
 	public void steeringUpdate()
 	{
-		UpdateVelocities(Time.deltaTime);
-		UpdatePosition(Time.deltaTime);
-		UpdateRotation(Time.deltaTime);
+		if (!creature.hault) 
+		{
+			UpdateVelocities (Time.deltaTime);
+			UpdatePosition (Time.deltaTime);
+			UpdateRotation (Time.deltaTime);
+		}
 	}
 	
 	public void ResetVelocities()
