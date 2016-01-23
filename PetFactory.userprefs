@@ -1,13 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SteeringAgent.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Spline.cs">
     <Files>
-      <File FileName="Assets\Scripts\SteeringBehaviour.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Node.cs" Line="12" Column="21" />
-      <File FileName="Assets\Scripts\SteeringAgent.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SteeringBehaviour.cs" Line="7" Column="31" />
+      <File FileName="Assets\Scripts\Node.cs" Line="15" Column="22" />
+      <File FileName="Assets\Scripts\SteeringAgent.cs" Line="8" Column="27" />
       <File FileName="Assets\Scripts\Align.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Seek.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Spline.cs" Line="10" Column="3" />
+      <File FileName="Assets\Scripts\Seek.cs" Line="10" Column="14" />
+      <File FileName="Assets\Scripts\Spline.cs" Line="8" Column="45" />
+      <File FileName="Assets\Scripts\Creature.cs" Line="6" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

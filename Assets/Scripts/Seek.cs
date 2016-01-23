@@ -5,12 +5,12 @@ using System;
 public class Seek : SteeringBehavior
 {
 	Creature player;
-	public Vector3 target;    
+	public Node target;    
 	
 	void Start()
 	{
 		player = GetComponent<Creature> ();
-		target = player.target;
+		target = player.targetNode;
 	}
 	
 	
@@ -18,8 +18,8 @@ public class Seek : SteeringBehavior
 	{
 		get
 		{
-			target = player.target;
-			return MaxAcceleration * (new Vector3(target.x,0.2f,target.z)-transform.position).normalized;
+			target = player.targetNode;
+			return MaxAcceleration * (new Vector3(target.transform.position.x,0.2f,target.transform.position.z)-transform.position).normalized;
 		}
 	}
 	
