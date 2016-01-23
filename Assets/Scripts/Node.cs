@@ -6,7 +6,7 @@ public class Node : MonoBehaviour {
 
 	public Node prevNode;
 	public Node nextNode;
-	private int identifier =0;
+	private int identifier = 0;
 	public int ID 
 	{
 		get {
@@ -21,11 +21,7 @@ public class Node : MonoBehaviour {
 			identifier = value;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 	void OnTriggerEnter(Collider col)
 	{
 		Creature creature = col.gameObject.GetComponent<Creature> ();
