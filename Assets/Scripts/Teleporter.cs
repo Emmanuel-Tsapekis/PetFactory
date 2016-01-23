@@ -12,17 +12,11 @@ public class Teleporter : MonoBehaviour {
 		node = GetComponent<Node> ();
 		spline = node.transform.parent.GetComponent<Spline> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		//if(player.
-	}
-	
+		
 	public void teleport(Creature creature){
 		if (!creature.teleported) {
 			creature.teleported = true;
-			creature.targetNode = otherEnd.node;
-			creature.transform.parent = spline.transform;
+			creature.ChangeTarget(otherEnd.node);
 			creature.transform.position = otherEnd.transform.position;
 		}
 		else{

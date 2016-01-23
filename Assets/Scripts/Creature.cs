@@ -41,11 +41,10 @@ public class Creature : MonoBehaviour {
 	public void ChangeTarget(Node node)
 	{
 		targetNode = node;
-	}
-	public void ChangeSpline(Spline spline)
-	{
-		transform.parent = spline.transform;
-		ChangeTarget (spline.firstNode);
+		if (node.transform.parent != transform.parent) 
+		{
+			transform.parent = node.transform.parent;
+		}
 	}
 	private bool IsCloseToNode()
 	{
