@@ -27,9 +27,9 @@ public class Creature : MonoBehaviour {
 				{
 					ChangeTarget(targetNode.nextNode);
 				}
-				else
+				else if(targetNode.isTeleporter)
 				{
-					hault = true;
+					targetNode.Teleport(this);
 				}
 			}
 			if(agent)
@@ -37,6 +37,10 @@ public class Creature : MonoBehaviour {
 				agent.steeringUpdate();
 			}
 		}
+	}
+	public void ResetVelocities()
+	{
+		agent.ResetVelocities ();
 	}
 	public void ChangeTarget(Node node)
 	{

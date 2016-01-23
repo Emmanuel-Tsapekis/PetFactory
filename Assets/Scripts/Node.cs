@@ -6,7 +6,9 @@ public class Node : MonoBehaviour {
 
 	public Node prevNode;
 	public Node nextNode;
-	private int identifier =0;
+	public bool isTeleporter;
+	public Node teleportDestination;
+	private int identifier = 0;
 	public int ID 
 	{
 		get {
@@ -21,26 +23,18 @@ public class Node : MonoBehaviour {
 			identifier = value;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-	void OnTriggerEnter(Collider col)
-	{
-		Creature creature = col.gameObject.GetComponent<Creature> ();
-		if(creature) 
-		{
-			creature.targetNode = this;
-		}
-	}
 
-	void OnCollisionEnter(Collision col)
-	{
-		Creature creature = col.gameObject.GetComponent<Creature> ();
-		if(creature) 
-		{
-			creature.targetNode = this;
+	public void Teleport(Creature creature){
+		if (!creature.teleported && teleportDestination) {
+			creature.ResetVelocities();
+			creature.teleported = true;
+			Node newTarget = teleportDestination.nextNode;
+			creature.ChangeTarget(newTarget);
+			creature.transform.LookAt(newTarget.transform.position);
+			creature.transform.position = teleportDestination.transform.position;
+		}
+		else{
+			creature.teleported = false;
 		}
 	}
 }
