@@ -4,6 +4,7 @@ using System.Collections;
 public class Creature : MonoBehaviour {
 
 	public Node targetNode;
+	public Node jumpNode;
 	[SerializeField] private float changeTargetDistance;
 	[SerializeField] private LayerMask creatureLayer;
 	[SerializeField] private float flickDistance;
@@ -42,7 +43,7 @@ public class Creature : MonoBehaviour {
 				agent.steeringUpdate();
 			}
 		}
-		if (targetNode.prevNode && targetNode.prevNode.canFlick) {
+		if (jumpNode) {
 			// Handle native touch events
 			foreach (Touch touch in Input.touches) {
 				if(isFlicking || TouchesThisCreature(touch.position))
@@ -71,7 +72,12 @@ public class Creature : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay (point);
 		Physics.Raycast (ray, out hit);
 		if (hit.collider) {
+			Jump jump = hit.collider.GetComponent<Jump>();
 			if (hit.collider.transform.parent == transform) {
+				return true;
+			}
+			if(jump.jumpingCreature == this)
+			{
 				return true;
 			}
 		}
@@ -82,6 +88,7 @@ public class Creature : MonoBehaviour {
 		case TouchPhase.Began:
 			flickStartPosition = touchPosition;
 			isFlicking = true;
+			targetNode = jumpNode;
 			break;
 		case TouchPhase.Moved:
 			// TODO (maybe do nothing)
@@ -91,7 +98,7 @@ public class Creature : MonoBehaviour {
 //			Debug.LogError (flickStartPosition+",,, "+ touchPosition+ "==="+distance);
 //			if(distance >= flickDistance)
 			{
-				targetNode = targetNode.prevNode.flickTarget;
+//				targetNode = targetNode.prevNode.flickTarget;
 			}
 			isFlicking = true;
 			break;
