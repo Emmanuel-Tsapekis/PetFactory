@@ -13,7 +13,7 @@ public class Spline : MonoBehaviour {
 
 	public void Awake()
 	{
-		string number = transform.name [transform.name.Length - 2].ToString ();
+		string number = transform.name.Replace("Spline (","").Replace(")","");
 		ID =  int.Parse(number);
 		nodes.AddRange(GetComponentsInChildren<Node> ());
 		foreach (Node node in nodes) 

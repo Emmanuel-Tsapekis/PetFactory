@@ -17,8 +17,8 @@ public class Node : MonoBehaviour {
 		get 
 		{
 			if (identifier == 0) {
-				string number = transform.name [transform.name.Length - 2].ToString ();
-				ID = int.Parse (number);
+                string number = transform.name.Replace("Node (", "").Replace(")", "");
+                ID = int.Parse (number);
 			}
 			return identifier;
 		}
