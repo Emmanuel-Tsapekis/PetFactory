@@ -15,7 +15,6 @@ public class Node : MonoBehaviour {
 	private bool isInTeleporter = false;
 	private Creature creatureWaiting;
 	[SerializeField] private GameObject firewall;
-
 	//flick logic
 	public bool canFlick;
 	public Node flickTarget;

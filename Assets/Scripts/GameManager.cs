@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-
+	
+	[SerializeField] private GameObject blood;
 	[SerializeField]
 	private TextMesh cuteCountText;
 	[SerializeField]
@@ -30,8 +31,9 @@ public class GameManager : MonoBehaviour {
 			isDone = true;
 		}
 		if (isDone && (Input.touchCount>0 || Input.GetMouseButtonDown(0))) {
-			YOUWINOBJECT.SetActive(false);
+			Application.LoadLevel(0);
 		}
+		blood.SetActive(false);
 	}
 	public void ScorePoint(Creature creature, bool cute)
 	{
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour {
 			}
 			else{
 				--uglyCount;
+				blood.SetActive(true);
 				uglyCountText.text = uglyCount.ToString();
 			}
 		}
