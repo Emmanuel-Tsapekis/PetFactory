@@ -45,19 +45,11 @@ public class Button : MonoBehaviour {
 		{
 			if (hit.collider.transform == transform)
 			{
-				isPressed = true;//if we want to redragand press
-				if(buttonToMove)
-				{
-					buttonToMove.position = new Vector3(buttonToMove.position.x, yValueDown, buttonToMove.position.z);
-				}
+				Pressed (true);
 				return true;
 			}
 		}
-		isPressed = false;
-		if (buttonToMove)
-		{
-			buttonToMove.position = new Vector3(buttonToMove.position.x, yValueDown, buttonToMove.position.z);
-		}
+		Pressed (false);
 		return false;
 	}
 	private void HandleTouch(int touchFingerId, Vector3 touchPosition, TouchPhase touchPhase)
@@ -70,8 +62,17 @@ public class Button : MonoBehaviour {
 		case TouchPhase.Moved:
 			break;
 		case TouchPhase.Ended:
-//			isPressed = false;
+			Pressed (false);
 			break;
+		}
+	}
+	private void Pressed(bool pressed)
+	{
+		float yValue = (pressed) ? yValueDown : yValueUp;
+		isPressed = pressed;
+		if(buttonToMove)
+		{
+			buttonToMove.position = new Vector3(buttonToMove.position.x, yValue, buttonToMove.position.z);
 		}
 	}
 }
