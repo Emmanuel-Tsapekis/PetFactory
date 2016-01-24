@@ -81,6 +81,10 @@ public class Node : MonoBehaviour {
 			creature.ChangeTarget(newTarget);
 			creature.transform.LookAt(newTarget.transform.position);
 			creature.transform.position = teleportDestination.transform.position;
+            foreach (Button button in buttonsToTeleport)
+            {
+                button.Pressed(false);
+            }
 		}
 		else{
 			creature.teleported = false;
