@@ -21,6 +21,9 @@ public class Node : MonoBehaviour {
 	public bool canFlick;
 	public Node flickTarget;
 
+	public bool ISLASTNODE;
+	public bool ISCUTE;
+
 	private int identifier = 0;
 	public int ID 
 	{

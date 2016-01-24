@@ -1,11 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{847A1CD0-9530-9804-E3D8-5D9B25FFCA07}") = "PetFactory", "Assembly-CSharp-firstpass.csproj", "{7C2B9CF9-683B-9535-8BDB-2BF21F46395D}"
+Project("{847A1CD0-9530-9804-E3D8-5D9B25FFCA07}") = "PetFactory", "Assembly-CSharp-firstpass-vs.csproj", "{7C2B9CF9-683B-9535-8BDB-2BF21F46395D}"
 EndProject
-Project("{847A1CD0-9530-9804-E3D8-5D9B25FFCA07}") = "PetFactory", "Assembly-CSharp.csproj", "{08992ADF-51EA-3428-FB6F-762D752D5F8C}"
+Project("{847A1CD0-9530-9804-E3D8-5D9B25FFCA07}") = "PetFactory", "Assembly-CSharp-vs.csproj", "{08992ADF-51EA-3428-FB6F-762D752D5F8C}"
 EndProject
-Project("{847A1CD0-9530-9804-E3D8-5D9B25FFCA07}") = "PetFactory", "Assembly-CSharp-Editor.csproj", "{974FE239-D4DB-8170-3F0F-B44B5131ED9D}"
+Project("{847A1CD0-9530-9804-E3D8-5D9B25FFCA07}") = "PetFactory", "Assembly-CSharp-Editor-vs.csproj", "{974FE239-D4DB-8170-3F0F-B44B5131ED9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-				GlobalSection(MonoDevelopProperties) = preSolution
+					GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

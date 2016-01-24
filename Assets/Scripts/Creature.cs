@@ -10,6 +10,7 @@ public class Creature : MonoBehaviour {
 	private SteeringAgent agent;
 	public bool hault { get; private set;}
 	public bool teleported = false;
+	public bool isCute;
 	private Vector3 flickStartPosition;
 	private bool isFlicking = false;
 	// Use this for initialization
@@ -107,6 +108,9 @@ public class Creature : MonoBehaviour {
 		if (node.transform.parent != transform.parent) 
 		{
 			transform.parent = node.transform.parent;
+		}
+		if (node.ISLASTNODE) {
+			GameManager.Instance.ScorePoint(this,node.ISCUTE);
 		}
 	}
 	private bool IsCloseToNode()
