@@ -19,7 +19,7 @@ public sealed class SteeringAgent : MonoBehaviour
 		alignScript = GetComponent<Align> ();
 		behaviour = GetComponents<SteeringBehavior> ();
 		creature = GetComponent<Creature> ();
-		defaultY = transform.position.y;
+//		defaultY = transform.position.y;
 	}
 	
 	public void steeringUpdate()
@@ -61,7 +61,7 @@ public sealed class SteeringAgent : MonoBehaviour
 	private void UpdatePosition(float deltaTime)
 	{
 		transform.position += Velocity * Time.fixedDeltaTime;
-		transform.position = new Vector3 (transform.position.x, defaultY, transform.position.z);
+//		transform.position = new Vector3 (transform.position.x, defaultY, transform.position.z);
 	}
 	
 	private void UpdateRotation(float deltaTime)
