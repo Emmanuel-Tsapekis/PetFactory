@@ -7,7 +7,6 @@ public class Node : MonoBehaviour {
 	//basic node
 	public Node prevNode;
 	public Node nextNode;
-
 	//teleportation
 	public bool isTeleporter;
 	public Node teleportDestination;
