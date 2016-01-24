@@ -8,10 +8,14 @@ public class Node : MonoBehaviour {
 	public Node nextNode;
 	public bool isTeleporter;
 	public Node teleportDestination;
+	public bool canFlick;
+	public Node flickTarget;
+
 	private int identifier = 0;
 	public int ID 
 	{
-		get {
+		get 
+		{
 			if (identifier == 0) {
 				string number = transform.name [transform.name.Length - 2].ToString ();
 				ID = int.Parse (number);
