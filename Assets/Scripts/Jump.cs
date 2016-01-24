@@ -4,6 +4,7 @@ using System.Collections;
 public class Jump : MonoBehaviour {
 	[SerializeField]
 	private Node node;
+	public Creature jumpingCreature;
 	// Use this for initialization
 	void Start () {
 	
@@ -13,8 +14,18 @@ public class Jump : MonoBehaviour {
 	void Update () {
 	
 	}
+	void OnTriggerExit(Collider other) {
+		Creature creature = other.GetComponent<Creature>();
+		if (creature) {
+			creature.jumpNode = null;
+		}
+	}
 	void OnTriggerEnter(Collider other) {
-		Destroy(other.gameObject);
+		Creature creature = other.GetComponent<Creature>();
+		if (creature) {
+			jumpingCreature =creature;
+			creature.jumpNode = node;
+		}
 	}
 	void OnCollisionEnter(Collision other){
 		Destroy(other.gameObject);
