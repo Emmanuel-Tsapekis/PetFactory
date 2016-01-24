@@ -11,7 +11,11 @@ public class Node : MonoBehaviour {
 	//teleportation
 	public bool isTeleporter;
 	public Node teleportDestination;
-	[SerializeField] private List<Button> buttons;
+	[SerializeField] private List<Button> buttonsToTeleport;
+	private bool isWaitingToTeleport = false;
+	private bool isInTeleporter = false;
+	private Creature creatureWaiting;
+	[SerializeField] private GameObject firewall;
 
 	//flick logic
 	public bool canFlick;
@@ -35,11 +39,40 @@ public class Node : MonoBehaviour {
 	}
 	public void Update()
 	{
-
+		if (isWaitingToTeleport && isInTeleporter) {
+			firewall.SetActive (true);
+		} 
+		else if(isInTeleporter && AllButtonsPressed() ) {
+			isWaitingToTeleport = false;
+			firewall.SetActive (false);
+			Teleport (creatureWaiting);
+		}
 	}
 
-	public void Teleport(Creature creature){
-
+	public void TeleportEnter(Creature creature){
+		isInTeleporter = true;
+		if (AllButtonsPressed()) {
+			isWaitingToTeleport = false;
+			Teleport(creature);
+		}
+		else {
+			creatureWaiting = creature;
+			isWaitingToTeleport = true;
+		}
+	}
+ 	private bool AllButtonsPressed(){
+		if (buttonsToTeleport.Count == 0) {
+			return true;
+		}
+		foreach (Button button in buttonsToTeleport) {
+			if(!button.isPressed){
+				return false;
+			}
+		}
+		return true;
+	}
+	private void Teleport(Creature creature)
+	{
 		if (!creature.teleported && teleportDestination) {
 			creature.ResetVelocities();
 			creature.teleported = true;
@@ -51,5 +84,6 @@ public class Node : MonoBehaviour {
 		else{
 			creature.teleported = false;
 		}
+		isInTeleporter = false;
 	}
 }

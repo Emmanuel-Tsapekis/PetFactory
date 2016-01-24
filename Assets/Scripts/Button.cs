@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Button : MonoBehaviour {
 
+	[SerializeField] private Transform buttonToMove;
+	[SerializeField] private float yValueUp;
+	[SerializeField] private float yValueDown;
+
 	public bool isPressed = false;
 	void Update()
 	{
@@ -41,11 +45,19 @@ public class Button : MonoBehaviour {
 		{
 			if (hit.collider.transform == transform)
 			{
-//				isPressed = true;//if we want to redragand press
+				isPressed = true;//if we want to redragand press
+				if(buttonToMove)
+				{
+					buttonToMove.position = new Vector3(buttonToMove.position.x, yValueDown, buttonToMove.position.z);
+				}
 				return true;
 			}
 		}
 		isPressed = false;
+		if (buttonToMove)
+		{
+			buttonToMove.position = new Vector3(buttonToMove.position.x, yValueDown, buttonToMove.position.z);
+		}
 		return false;
 	}
 	private void HandleTouch(int touchFingerId, Vector3 touchPosition, TouchPhase touchPhase)
@@ -53,7 +65,7 @@ public class Button : MonoBehaviour {
 		switch (touchPhase)
 		{
 		case TouchPhase.Began:
-			isPressed = true;//not ifwe want to redrag and press
+//			isPressed = true;//not ifwe want to redrag and press
 			break;
 		case TouchPhase.Moved:
 			break;

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Creature : MonoBehaviour {
@@ -33,7 +33,7 @@ public class Creature : MonoBehaviour {
 				}
 				else if(targetNode.isTeleporter)
 				{
-					targetNode.Teleport(this);
+					targetNode.TeleportEnter(this);
 				}
 			}
 			if(agent)
