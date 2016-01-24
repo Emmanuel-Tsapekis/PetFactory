@@ -20,8 +20,13 @@ public class Lever : MonoBehaviour
     [SerializeField]
     private Transform rotationPivot;
 
+    [SerializeField]
+    private AudioClip[] audioClip;
+    private AudioSource source;
+
     void Awake()
     {
+        source = GameObject.FindObjectOfType<AudioSource>();
         OnLeverSwitch(isLeft);
     }
     // Update is called once per frame
@@ -90,11 +95,18 @@ public class Lever : MonoBehaviour
         {
             rotationPivot.eulerAngles = new Vector3(-60f, 0, 0);
             fromNode.nextNode = leftNode;
+            playSound(0);
         }
         else
         {
             rotationPivot.eulerAngles = new Vector3(-120f, 0, 0);
             fromNode.nextNode = rightNode;
+            playSound(1);
         }
+    }
+
+    public void playSound(int i) {
+        source.clip = audioClip[i];
+        source.Play();
     }
 }

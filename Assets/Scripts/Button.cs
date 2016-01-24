@@ -31,7 +31,8 @@ public class Button : MonoBehaviour {
 		{
 			if (Input.GetMouseButtonDown(0) && (TouchesThisUIItem(Input.mousePosition)))
 			{
-				HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Began);
+                playSound(0);
+                HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Began);
 			}
 			if (Input.GetMouseButton(0) && (TouchesThisUIItem(Input.mousePosition)))
 			{
@@ -77,10 +78,11 @@ public class Button : MonoBehaviour {
 	{
 		float yValue = (pressed) ? yValueDown : yValueUp;
 		isPressed = pressed;
-        playSound(0);
+       
         if (buttonToMove)
 		{
-			buttonToMove.position = new Vector3(buttonToMove.position.x, yValue, buttonToMove.position.z);
+            
+            buttonToMove.position = new Vector3(buttonToMove.position.x, yValue, buttonToMove.position.z);
 		}
 	}
 
