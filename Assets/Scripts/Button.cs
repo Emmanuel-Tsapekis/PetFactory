@@ -6,9 +6,16 @@ public class Button : MonoBehaviour {
 	[SerializeField] private Transform buttonToMove;
 	[SerializeField] private float yValueUp;
 	[SerializeField] private float yValueDown;
+    [SerializeField]
+    private AudioClip[] audioClip;
+    private AudioSource source;
 
-	public bool isPressed = false;
-	void Update()
+    public bool isPressed = false;
+    void Awake()
+    {
+        source = GameObject.FindObjectOfType<AudioSource>();
+    }
+    void Update()
 	{
 		// Handle native touch events
 		foreach (Touch touch in Input.touches)
@@ -24,7 +31,8 @@ public class Button : MonoBehaviour {
 		{
 			if (Input.GetMouseButtonDown(0) && (TouchesThisUIItem(Input.mousePosition)))
 			{
-				HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Began);
+                playSound(0);
+                HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Began);
 			}
 			if (Input.GetMouseButton(0) && (TouchesThisUIItem(Input.mousePosition)))
 			{
@@ -70,9 +78,17 @@ public class Button : MonoBehaviour {
 	{
 		float yValue = (pressed) ? yValueDown : yValueUp;
 		isPressed = pressed;
-		if(buttonToMove)
+       
+        if (buttonToMove)
 		{
-			buttonToMove.position = new Vector3(buttonToMove.position.x, yValue, buttonToMove.position.z);
+            
+            buttonToMove.position = new Vector3(buttonToMove.position.x, yValue, buttonToMove.position.z);
 		}
 	}
+
+    public void playSound(int clip)
+    {
+        source.clip = audioClip[clip];
+        source.Play();
+    }
 }
