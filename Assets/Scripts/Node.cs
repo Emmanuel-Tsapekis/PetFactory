@@ -4,10 +4,16 @@ using System.Collections.Generic;
 
 public class Node : MonoBehaviour {
 
+	//basic node
 	public Node prevNode;
 	public Node nextNode;
+
+	//teleportation
 	public bool isTeleporter;
 	public Node teleportDestination;
+	[SerializeField] private List<Button> buttons;
+
+	//flick logic
 	public bool canFlick;
 	public Node flickTarget;
 
@@ -27,8 +33,13 @@ public class Node : MonoBehaviour {
 			identifier = value;
 		}
 	}
+	public void Update()
+	{
+
+	}
 
 	public void Teleport(Creature creature){
+
 		if (!creature.teleported && teleportDestination) {
 			creature.ResetVelocities();
 			creature.teleported = true;
