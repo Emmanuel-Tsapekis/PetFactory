@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
 			isDone = true;
 		}
 		if (isDone && (Input.touchCount>0 || Input.GetMouseButtonDown(0))) {
-			YOUWINOBJECT.SetActive(false);
+			Application.LoadLevel(0);
 		}
 		blood.SetActive(false);
 	}
