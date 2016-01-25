@@ -57,7 +57,7 @@ public class Button : MonoBehaviour {
 				return true;
 			}
 		}
-		Pressed (false);
+		//Pressed (false);
 		return false;
 	}
 	private void HandleTouch(int touchFingerId, Vector3 touchPosition, TouchPhase touchPhase)
@@ -70,12 +70,13 @@ public class Button : MonoBehaviour {
 		case TouchPhase.Moved:
 			break;
 		case TouchPhase.Ended:
-			Pressed (false);
+			//Pressed (false);
 			break;
 		}
 	}
-	private void Pressed(bool pressed)
+	public void Pressed(bool pressed)
 	{
+        isPressed = pressed;
 		float yValue = (pressed) ? yValueDown : yValueUp;
 		isPressed = pressed;
        
