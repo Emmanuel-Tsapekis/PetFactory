@@ -37,17 +37,21 @@ public class GameManager : MonoBehaviour {
 	}
 	public void ScorePoint(Creature creature, bool cute)
 	{
-		if (creature.isCute == cute) {
-			if(cute){
+		if (cute) {
+			if (creature.isCute) {
 				--cuteCount;
-				cuteCountText.text = cuteCount.ToString();
 			}
-			else{
-				--uglyCount;
-				blood.SetActive(true);
-				uglyCountText.text = uglyCount.ToString();
+			else {
+				++cuteCount;
 			}
+			cuteCountText.text = cuteCount.ToString ();
 		}
+		else {
+			--uglyCount;
+			blood.SetActive (true);
+			uglyCountText.text = uglyCount.ToString ();
+		}
+
 		if (cuteCount==0 && uglyCount==0 && YOUWINOBJECT) {
 			YOUWINOBJECT.SetActive(true);
 			isDone = true;
