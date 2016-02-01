@@ -1,33 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Jump : MonoBehaviour {
+public class Jump : MonoBehaviour
+{
 	[SerializeField]
 	private Node node;
-	public Creature jumpingCreature;
-	// Use this for initialization
-	void Start () {
+	private Creature jumpingCreature;
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	void OnTriggerExit(Collider other) {
+    public void OnTouched(TouchPhase touchPhase)
+    {       
+        switch (touchPhase)
+        {
+            case TouchPhase.Began:
+                if (jumpingCreature)
+                {
+                    jumpingCreature.targetNode = node;
+                }
+                break;
+            case TouchPhase.Moved:
+                break;
+            case TouchPhase.Ended:
+                break;
+        }
+    }
+
+	void OnTriggerExit(Collider other)
+    {
 		Creature creature = other.GetComponent<Creature>();
 		if (creature) {
 			creature.jumpNode = null;
 		}
 	}
-	void OnTriggerEnter(Collider other) {
+	void OnTriggerEnter(Collider other)
+    {
 		Creature creature = other.GetComponent<Creature>();
 		if (creature) {
-			jumpingCreature =creature;
+			jumpingCreature = creature;
 			creature.jumpNode = node;
 		}
-	}
-	void OnCollisionEnter(Collision other){
-		Destroy(other.gameObject);
 	}
 }

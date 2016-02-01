@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
 		if (isDone && (Input.touchCount>0 || Input.GetMouseButtonDown(0))) {
 			Application.LoadLevel(0);
 		}
-		blood.SetActive(false);
+		//blood.SetActive(false);
 	}
 	public void ScorePoint(Creature creature, bool cute)
 	{
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 		}
 		else {
 			--uglyCount;
-			blood.SetActive (true);
+			//blood.SetActive (true);
 			uglyCountText.text = uglyCount.ToString ();
 		}
 

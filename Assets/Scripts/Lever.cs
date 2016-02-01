@@ -27,69 +27,25 @@ public class Lever : MonoBehaviour
     void Awake()
     {
         source = GameObject.FindObjectOfType<AudioSource>();
-        OnLeverSwitch(isLeft);
+        OnLeverSwitch();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        // Handle native touch events
-        foreach (Touch touch in Input.touches)
-        {
-            if (wasTouched || TouchesThisUIItem(touch.position))
-            {
-                HandleTouch(touch.fingerId, Camera.main.ScreenToWorldPoint(touch.position), touch.phase);
-            }
-        }
 
-        // Simulate touch events from mouse events
-        if (Input.touchCount == 0)
-        {
-            if (Input.GetMouseButtonDown(0) && (wasTouched || TouchesThisUIItem(Input.mousePosition)))
-            {
-                HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Began);
-            }
-            if (Input.GetMouseButton(0) && (wasTouched || TouchesThisUIItem(Input.mousePosition)))
-            {
-                HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Moved);
-            }
-            if (Input.GetMouseButtonUp(0) && (wasTouched || TouchesThisUIItem(Input.mousePosition)))
-            {
-                HandleTouch(10, Camera.main.ScreenToWorldPoint(Input.mousePosition), TouchPhase.Ended);
-            }
-        }
-    }
-    private bool TouchesThisUIItem(Vector3 point)
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(point);
-        Physics.Raycast(ray, out hit);
-        if (hit.collider)
-        {
-            if (hit.collider.transform == transform)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    private void HandleTouch(int touchFingerId, Vector3 touchPosition, TouchPhase touchPhase)
+    public void OnTouched(TouchPhase touchPhase)
     {
         switch (touchPhase)
         {
             case TouchPhase.Began:
-                wasTouched = true;
+                isLeft = !isLeft;
+                OnLeverSwitch();
                 break;
             case TouchPhase.Moved:
-                // TODO (maybe do nothing)
                 break;
             case TouchPhase.Ended:
-                isLeft = !isLeft;
-                OnLeverSwitch(isLeft);
-                wasTouched = false;
                 break;
         }
     }
-    private void OnLeverSwitch(bool isLeft)
+
+    private void OnLeverSwitch()
     {
         if (isLeft)
         {
