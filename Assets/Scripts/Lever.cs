@@ -3,9 +3,6 @@ using System.Collections;
 
 public class Lever : MonoBehaviour
 {
-
-    [SerializeField]
-    private Node fromNode;
     [SerializeField]
     private Node leftNode;
     [SerializeField]
@@ -24,7 +21,7 @@ public class Lever : MonoBehaviour
     private AudioClip[] audioClip;
     private AudioSource source;
 
-    void Awake()
+    void Start()
     {
         source = GameObject.FindObjectOfType<AudioSource>();
         OnLeverSwitch();
@@ -50,13 +47,15 @@ public class Lever : MonoBehaviour
         if (isLeft)
         {
             rotationPivot.eulerAngles = new Vector3(-60f, 0, 0);
-            fromNode.nextNode = leftNode;
+            leftNode.gameObject.SetActive(true);
+            rightNode.gameObject.SetActive(false);
             playSound(0);
         }
         else
         {
             rotationPivot.eulerAngles = new Vector3(-120f, 0, 0);
-            fromNode.nextNode = rightNode;
+            leftNode.gameObject.SetActive(false);
+            rightNode.gameObject.SetActive(true);
             playSound(1);
         }
     }

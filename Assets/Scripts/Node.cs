@@ -14,11 +14,10 @@ public class Node : MonoBehaviour {
 	private bool isWaitingToTeleport = false;
 	private bool isInTeleporter = false;
 	private Creature creatureWaiting;
-	[SerializeField] private GameObject firewall;
 	//flick logic
 	public bool canFlick;
 	public Node flickTarget;
-
+    public bool m_IsDeathNode = false;
 	public bool ISLASTNODE;
 	public bool ISCUTE;
 
@@ -40,13 +39,12 @@ public class Node : MonoBehaviour {
 	}
 	public void Update()
 	{
-		if (isWaitingToTeleport && isInTeleporter) {
-			firewall.SetActive (true);
-		} 
-		else if(isInTeleporter && AllButtonsPressed() ) {
-			isWaitingToTeleport = false;
-			firewall.SetActive (false);
-			Teleport (creatureWaiting);
+		if(isTeleporter && isInTeleporter) {
+            if (AllButtonsPressed())
+            {
+                isWaitingToTeleport = false;
+                Teleport(creatureWaiting);
+            }
 		}
 	}
 

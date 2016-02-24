@@ -82,7 +82,11 @@ public class TouchManager : MonoBehaviour {
 
     private void HandleTeleportSwitch(GameObject subject, int touchFingerId, Vector3 touchPosition, TouchPhase touchPhase)
     {
-       
+        Button button = subject.GetComponent<Button>();
+        if (button)
+        {
+            button.OnTouched(touchPhase);
+        }
     }
 
     private void HandleCrusher(GameObject subject, int touchFingerId, Vector3 touchPosition, TouchPhase touchPhase)

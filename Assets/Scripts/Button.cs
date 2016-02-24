@@ -15,7 +15,7 @@ public class Button : MonoBehaviour {
     {
         //source = GameObject.FindObjectOfType<AudioSource>();
     }
-	private void OnTouch(TouchPhase touchPhase)
+	public void OnTouched(TouchPhase touchPhase)
 	{
 		switch (touchPhase)
 		{

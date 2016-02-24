@@ -22,10 +22,10 @@ public class Creature : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		hault = (targetNode)?false:true;
+		//hault = (targetNode)?false:true;
 		if(!hault)
 		{
-			if(IsCloseToNode()) 
+			/*if(IsCloseToNode()) 
 			{
 				if(targetNode.nextNode)
 				{
@@ -35,7 +35,7 @@ public class Creature : MonoBehaviour {
 				{
 					targetNode.TeleportEnter(this);
 				}
-			}
+			}*/
 			if(agent)
 			{
 				agent.steeringUpdate();
@@ -55,7 +55,7 @@ public class Creature : MonoBehaviour {
 			transform.parent = node.transform.parent;
 		}
 		if (node.ISLASTNODE) {
-			GameManager.Instance.ScorePoint(this,node.ISCUTE);
+			GameManager.Instance.ScorePoint(this, node.ISCUTE);
 		}
 	}
 	private bool IsCloseToNode()
@@ -69,4 +69,39 @@ public class Creature : MonoBehaviour {
 			return false;
 		}
 	}
+    void OnTriggerEnter(Collider other)
+    {
+        Node node = other.GetComponentInParent<Node>();
+        if (node)
+        {
+            if(node.m_IsDeathNode || node.ISLASTNODE)
+            {
+                Destroy(gameObject);
+            }
+            else if (node.isTeleporter)
+            {
+                node.TeleportEnter(this);
+                hault = true;
+            }
+            if((node.ID <= targetNode.ID && node.transform.parent != targetNode.transform.parent) || node == targetNode)
+            {
+                targetNode = node.nextNode;
+            }
+        }
+        Creature creature = other.GetComponent<Creature>();
+        if (creature)
+        {
+            hault = false;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+
+
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        //needs to exist for collision for reasons beyond me
+    }
 }

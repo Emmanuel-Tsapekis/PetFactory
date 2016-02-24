@@ -29,6 +29,10 @@ public class Jump : MonoBehaviour
 		Creature creature = other.GetComponent<Creature>();
 		if (creature) {
 			creature.jumpNode = null;
+            if(jumpingCreature == creature)
+            {
+                jumpingCreature = null;
+            }
 		}
 	}
 	void OnTriggerEnter(Collider other)
